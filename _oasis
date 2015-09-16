@@ -1,0 +1,12 @@
+OASISFormat: 0.4
+Name:        wadler-monads
+Version:     0.0.1
+Synopsis:    Monad practice
+Authors:
+License:     BSD-3-clause
+Plugins:     META (0.4), StdFiles (0.4), DevFiles (0.4)
+
+Executable run_monads
+  Path:       src
+  BuildTools: ocamlbuild
+  MainIs:     main.ml

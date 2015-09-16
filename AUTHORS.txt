@@ -1,0 +1,6 @@
+(* OASIS_START *)
+(* DO NOT EDIT (digest: 5a92d98cd46cab1d14b35e15766ac796) *)
+
+Authors of wadler-monads:
+
+(* OASIS_STOP *)
