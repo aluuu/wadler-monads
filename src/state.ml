@@ -1,6 +1,5 @@
 module type State = sig
   type t
-  val empty : t
 end
 
 module Make(State: State) = struct
@@ -23,7 +22,6 @@ end
 
 module State = Make(struct
     type t = int
-    let empty = 0
   end)
 
 let run () =

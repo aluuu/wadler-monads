@@ -1,6 +1,5 @@
 module type State = sig
   type t
-  val empty : t
 end
 
 module Make(State:State) : sig
