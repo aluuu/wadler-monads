@@ -29,17 +29,16 @@ module State = Make(struct
 let run () =
   let open State in
   let (>>=) = bind in
-  let print_state v =
+  let op v = unit (v * 2) in
+  let tick v =
     get >>= fun st ->
-    set (st*2) >>= fun () ->
-    let new_value = (String.concat ""
-                       [v; (Printf.sprintf "\nIntermediate state: %d;" st)]) in
-    unit new_value
+    set (st + 1) >>= fun () ->
+    unit v
   in
-  let (value, state) = run 2 (unit "" >>=
-                              print_state >>= print_state >>=
-                              print_state >>= print_state >>=
-                              print_state >>= print_state) in
-  Printf.printf "=== Final value: %s\n=== Final state: %d" value state;
+  let (value, state) = run 0 (
+      unit 1 >>=
+      op >>= tick >>= op >>= tick >>=
+      op >>= tick >>= op >>= tick) in
+  Printf.printf "=== Final value: %d\n=== Final state: %d" value state;
   flush stdout;
   ()
